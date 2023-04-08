@@ -90,6 +90,13 @@ contract Verification {
         return (docHashes[_hash].blockNumber,docHashes[_hash].minetime,docHashes[_hash].info,docHashes[_hash].ipfs_hash );
         }
 
+    event LogDocHash(uint256 blockNumber, uint256 minetime, string info, string ipfsHash);
+
+function testFindDocHash(bytes32 _hash) public {
+    (uint256 blockNumber, uint256 minetime, string memory info, string memory ipfsHash) = findDocHash(_hash);
+    emit LogDocHash(blockNumber, minetime, info, ipfsHash);
+}
+
     function deleteHash (bytes32 _hash) public
     authorised_Exporter(_hash)
     canAddHash

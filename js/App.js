@@ -361,6 +361,7 @@ async function sendHash() {
 
     const file = document.getElementById('doc-file').files[0]
     node = await Ipfs.create({ repo: 'Ali-ok' + Math.random() })
+    console.log(node)
     const fileReader = new FileReader()
     fileReader.readAsArrayBuffer(file)
     fileReader.onload = async(event) => {
@@ -378,7 +379,11 @@ async function sendHash() {
         fileReader.readAsArrayBuffer(file)
         fileReader.onload = async(event) => {
             let result = await node.add(fileReader.result)
+            console.log(result)
             window.ipfsCid = result.path
+            console.log(window.contract)
+            console.log(window.contract.methods)
+
         }
         await window.contract.methods
             .addDocHash(window.hashedfile, window.ipfsCid)

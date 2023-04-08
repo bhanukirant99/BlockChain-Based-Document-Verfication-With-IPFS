@@ -210,9 +210,11 @@ async function verify_Hash() {
             you can use any address because it used just for reading info from the contract
         */
         console.log(contract.methods)
-        console.log(contract.methods)
+        console.log(contract.methods.findDocHash)
 
-        // console.log(window.CONTRACT)
+        console.log(window.hashedfile)
+
+        console.log(window.CONTRACT.address)
 
         await contract.methods
             .findDocHash(window.hashedfile)
